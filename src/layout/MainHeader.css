@@ -1,0 +1,56 @@
+:active,
+:hover,
+:focus {
+  outline: 0 !important;
+  outline-offset: 0;
+}
+::before,
+::after {
+  position: absolute;
+  content: "";
+}
+body {
+  margin: 0 auto;
+}
+
+.btn-appbar {
+  min-width: 120px;
+  width: fit-content;
+  background-color: white;
+  padding: 0 10px;
+  height: 30px;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #000000;
+  letter-spacing: 2.8px;
+  line-height: 1.6;
+  position: relative;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 0;
+}
+.btn-appbar span {
+  z-index: 1;
+}
+.btn-appbar::before {
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  top: 0;
+  transition: all 0.4s ease;
+  background-color: #1e88e5;
+}
+.btn-appbar::before {
+  left: 0;
+}
+.btn-appbar:hover::before {
+  width: 97%;
+}
+.btn-appbar:hover span {
+  color: #ffff;
+}
