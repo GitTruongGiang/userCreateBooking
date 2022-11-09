@@ -116,7 +116,7 @@ function ListCreate() {
                       </Typography>
                     </CardContent>
                   </Stack>
-                  <Box>
+                  <Box sx={{ display: "flex" }}>
                     <Button
                       sx={{ mr: 1, mb: 1, height: "30px" }}
                       variant="contained"
