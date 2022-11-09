@@ -10,7 +10,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Box, Stack } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getListCreateFlight } from "./flightSlice";
+import { deletedFlight, getListCreateFlight } from "./flightSlice";
 import { countrys } from "../../list";
 import ModalFlight from "./ModalFlight";
 
@@ -31,6 +31,9 @@ function ListCreate() {
 
   const dispatch = useDispatch();
 
+  const handleDeletedFlight = async (flightId) => {
+    dispatch(deletedFlight(flightId));
+  };
   useEffect(() => {
     dispatch(getListCreateFlight({ page, limit }));
   }, [dispatch, page, limit]);
@@ -101,18 +104,28 @@ function ListCreate() {
                       </Typography>
                     </CardContent>
                   </Stack>
-                  <Button
-                    sx={{ mr: 2, height: "30px" }}
-                    variant="contained"
-                    onClick={() => handleOpen(flight)}
-                  >
-                    Details
-                    <ChevronRightIcon />
-                  </Button>
+                  <Box>
+                    <Button
+                      sx={{ mr: 1, height: "30px" }}
+                      variant="contained"
+                      onClick={() => handleOpen(flight)}
+                    >
+                      Details
+                      <ChevronRightIcon />
+                    </Button>
+                    <Button
+                      sx={{ mr: 2, height: "30px", backgroundColor: "#f64444" }}
+                      variant="contained"
+                      onClick={() => handleDeletedFlight(flight._id)}
+                    >
+                      Deleted
+                      <ChevronRightIcon />
+                    </Button>
+                  </Box>
                 </Card>
               ))}
           </CardContent>
-          <Pagination count={10} page={page} onChange={handleChange} />
+          <Pagination count={totalPage} page={page} onChange={handleChange} />
         </Card>
       </Container>
       <ModalFlight open={open} setOpen={setOpen} modalFlight={modalFlight} />

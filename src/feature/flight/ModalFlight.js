@@ -241,7 +241,9 @@ function ModalFlight({ open, setOpen, modalFlight }) {
                           Nơi đi:
                         </Typography>
                         {countrys.map((country) => {
-                          if (country.value === modalFlight.from) {
+                          if (
+                            country.value === modalFlight.from?.toUpperCase()
+                          ) {
                             return (
                               <Typography sx={{ ml: 1 }} key={country.value}>
                                 {country.label}
@@ -255,7 +257,7 @@ function ModalFlight({ open, setOpen, modalFlight }) {
                           Nơi đến:
                         </Typography>
                         {countrys.map((country) => {
-                          if (country.value === modalFlight.to) {
+                          if (country.value === modalFlight.to?.toUpperCase()) {
                             return (
                               <Typography sx={{ ml: 1 }} key={country.value}>
                                 {country.label}

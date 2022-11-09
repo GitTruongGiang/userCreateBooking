@@ -11,25 +11,28 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAirlines, getListCreateAirlines } from "./airlineSlice";
+import { getListCreatePlane } from "./planeSlice";
+import ModalPlane from "./ModalPlane";
 
-function ListAirlines() {
+function ListPlane() {
   const [page, setPage] = React.useState(1);
   const [limit, setLimit] = useState(10);
+  const [open, setOpen] = React.useState(false);
+  const [dataPlane, setDataPlane] = useState("");
+  const handleOpen = (plane) => {
+    setDataPlane(plane._id);
+    setOpen(true);
+  };
 
   const handleChange = (event, value) => {
     setPage(value);
   };
   const dispatch = useDispatch();
-
-  const handleDeleteAirlines = async (airlineId) => {
-    dispatch(deleteAirlines(airlineId));
-  };
   useEffect(() => {
-    dispatch(getListCreateAirlines({ page, limit }));
+    dispatch(getListCreatePlane({ page, limit }));
   }, [dispatch, page, limit]);
 
-  const { airlines, count, totalPage } = useSelector((state) => state.airlines);
+  const { planes, count, totalPage } = useSelector((state) => state.planes);
   return (
     <Container maxWidth="lg">
       <Card
@@ -40,18 +43,16 @@ function ListAirlines() {
         }}
       >
         <CardContent>
-          <Typography sx={{ fontSize: "20px" }}>
-            danh sach hang may bay
-          </Typography>
-          {airlines.length &&
-            airlines.map((airline) => (
+          <Typography sx={{ fontSize: "20px" }}>danh sách máy bay</Typography>
+          {planes.length &&
+            planes.map((plane) => (
               <Card
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
                 }}
-                key={airline._id}
+                key={plane.codePlane}
               >
                 <Stack
                   direction="row"
@@ -60,29 +61,44 @@ function ListAirlines() {
                 >
                   <CardContent sx={{ display: "flex", alignItems: "center" }}>
                     <Typography sx={{ fontWeight: 600 }}>
-                      Name Airlines
+                      Name Planes
                     </Typography>
-                    :<Typography sx={{ ml: 1 }}>{airline.name}</Typography>
+                    :<Typography sx={{ ml: 1 }}>{plane.name}</Typography>
                   </CardContent>
                   <CardContent
-                    style={{
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Typography sx={{ fontWeight: 600 }}>Code Plane</Typography>
+                    :<Typography sx={{ ml: 1 }}>{plane.codePlane}</Typography>
+                  </CardContent>
+                  <CardContent
+                    sx={{
                       display: "flex",
                       alignItems: "center",
                       paddingBottom: "16px",
                     }}
                   >
                     <Typography sx={{ fontWeight: 600 }}>
-                      Count Plane
+                      Chair Count
                     </Typography>
-                    :
-                    <Typography sx={{ ml: 1 }}>{airline.countPlane}</Typography>
+                    :<Typography sx={{ ml: 1 }}>{plane.chairCount}</Typography>
                   </CardContent>
                 </Stack>
-                <Box sx={{ mr: 2 }}>
+                <Box>
                   <Button
-                    sx={{ height: "30px", backgroundColor: "#f64444" }}
+                    sx={{ mr: 1, height: "30px" }}
                     variant="contained"
-                    onClick={() => handleDeleteAirlines(airline._id)}
+                    onClick={() => handleOpen(plane)}
+                  >
+                    check Id
+                    <ChevronRightIcon />
+                  </Button>
+                  <Button
+                    sx={{ mr: 2, height: "30px", backgroundColor: "#f64444" }}
+                    variant="contained"
                   >
                     Deleted
                     <ChevronRightIcon />
@@ -93,8 +109,9 @@ function ListAirlines() {
         </CardContent>
         <Pagination count={totalPage} page={page} onChange={handleChange} />
       </Card>
+      <ModalPlane open={open} setOpen={setOpen} dataPlane={dataPlane} />
     </Container>
   );
 }
 
-export default ListAirlines;
+export default ListPlane;

@@ -184,7 +184,6 @@ function MainFooter() {
           <Typography sx={{ mb: 1, fontWeight: 600 }}>
             Site / Currency
           </Typography>
-          <CountrySelect />
         </Grid>
       </Grid>
       <Typography

@@ -16,16 +16,14 @@ import dayjs from "dayjs";
 import { createFlight } from "./flightSlice";
 
 const defaultValues = {
-  namePlane: "",
+  planeId: "",
   nameAirlines: "",
-  codePlane: "",
   price: "",
 };
 
 const UpdateUserSchema = yup.object().shape({
-  namePlane: yup.string().required("NamePlane is required"),
+  planeId: yup.string().required("planeId is required"),
   nameAirlines: yup.string().required("NameAirlines is required"),
-  codePlane: yup.string().required("codePlane is required"),
   price: yup.number().required("price is required"),
 });
 
@@ -48,17 +46,16 @@ function CreateFlight() {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    const { nameAirlines, namePlane, codePlane, price } = data;
+  const onSubmit = async (data) => {
+    console.log(data);
+    const { nameAirlines, planeId, price } = data;
     const date = fromDay.get("date");
     const month = fromDay.get("month");
     const year = fromDay.get("year");
-
     dispatch(
       createFlight({
         nameAirlines,
-        namePlane,
-        codePlane,
+        planeId,
         from,
         to,
         fromDay: fromDay
@@ -122,13 +119,13 @@ function CreateFlight() {
               />
               <Controller
                 control={control}
-                name="namePlane"
+                name="planeId"
                 render={({ field, fieldState: { error } }) => {
                   return (
                     <TextField
                       fullWidth
                       autoComplete="off"
-                      label="Name Plane"
+                      label="Plane ID"
                       {...field}
                       error={!!error}
                       helperText={error?.message}
@@ -136,22 +133,7 @@ function CreateFlight() {
                   );
                 }}
               />
-              <Controller
-                control={control}
-                name="codePlane"
-                render={({ field, fieldState: { error } }) => {
-                  return (
-                    <TextField
-                      fullWidth
-                      autoComplete="off"
-                      label="code Plane"
-                      {...field}
-                      error={!!error}
-                      helperText={error?.message}
-                    />
-                  );
-                }}
-              />
+
               <TextField
                 select
                 fullWidth

@@ -12,25 +12,14 @@ const initialState = {
 export const createFlight = createAsyncThunk(
   "flight/createflight",
   async (
-    {
-      nameAirlines,
-      namePlane,
-      codePlane,
-      from,
-      to,
-      fromDay,
-      timeFrom,
-      timeTo,
-      price,
-    },
+    { nameAirlines, planeId, from, to, fromDay, timeFrom, timeTo, price },
     { rejectWithValue }
   ) => {
     try {
       const url = `/flights`;
       const response = await appService.post(url, {
         nameAirlines,
-        namePlane,
-        codePlane,
+        planeId,
         from,
         to,
         fromDay,
@@ -83,6 +72,19 @@ export const updateFlight = createAsyncThunk(
   }
 );
 
+export const deletedFlight = createAsyncThunk(
+  "flight/deletedflight",
+  async (flightId, { rejectWithValue }) => {
+    try {
+      const url = `/flights/${flightId}`;
+      const response = await appService.delete(url);
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+);
+
 const flightSlice = createSlice({
   name: "flight",
   initialState,
@@ -121,10 +123,22 @@ const flightSlice = createSlice({
       })
       .addCase(updateFlight.fulfilled, (state, action) => {
         state.isLoading = false;
-        console.log(action.payload.data);
         toast.success("update flight success");
       })
       .addCase(updateFlight.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(deletedFlight.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deletedFlight.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const { flights } = action.payload.data;
+        state.flights = flights;
+        toast.success("deleted flight success");
+      })
+      .addCase(deletedFlight.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

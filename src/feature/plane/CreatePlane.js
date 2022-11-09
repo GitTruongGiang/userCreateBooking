@@ -41,8 +41,7 @@ function CreatePlane() {
   } = methods;
 
   const dispatch = useDispatch();
-  const { planes } = useSelector((state) => state.planes);
-  console.log(planes);
+  const { planeId } = useSelector((state) => state.planes);
   const onSubmit = (data) => {
     const { namePlanes, nameAirlines, codePlane } = data;
     dispatch(createPlane({ namePlanes, nameAirlines, codePlane }));
@@ -130,11 +129,11 @@ function CreatePlane() {
                 Create
               </LoadingButton>
             </Stack>
-            {planes.codePlane ? (
+            {planeId ? (
               <Typography>
-                copy codePlane để tạo Flight:
+                copy ID Plane để tạo Flight:
                 <Box component="span" sx={{ color: "#f44336", ml: 1 }}>
-                  {planes.codePlane}
+                  {planeId}
                 </Box>
               </Typography>
             ) : (

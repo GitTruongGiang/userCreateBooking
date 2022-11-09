@@ -34,7 +34,6 @@ function HomePage() {
         maxWidth="lg"
         sx={{
           backgroundColor: "white",
-          height: 700,
           padding: "20px",
           borderRadius: "10px",
         }}

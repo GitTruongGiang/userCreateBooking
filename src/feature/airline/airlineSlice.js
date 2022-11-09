@@ -36,6 +36,19 @@ export const getListCreateAirlines = createAsyncThunk(
   }
 );
 
+export const deleteAirlines = createAsyncThunk(
+  "airlines/deleteairlines",
+  async (airlineId, { rejectWithValue }) => {
+    try {
+      const url = `/airlines/${airlineId}`;
+      const response = await appService.delete(url);
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+);
+
 const airlineSlice = createSlice({
   name: "airlines",
   initialState,
@@ -47,8 +60,8 @@ const airlineSlice = createSlice({
       })
       .addCase(createAirlines.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { airline } = action.payload.data;
-        state.airlines = airline;
+        const { airlines } = action.payload.data;
+        state.airlines = airlines;
         toast.success("create airline success");
       })
       .addCase(createAirlines.rejected, (state, action) => {
@@ -66,6 +79,19 @@ const airlineSlice = createSlice({
         state.totalPage = totalPage;
       })
       .addCase(getListCreateAirlines.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(deleteAirlines.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteAirlines.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const { airlines } = action.payload.data;
+        state.airlines = airlines;
+        toast.success("deleted airline success");
+      })
+      .addCase(deleteAirlines.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
