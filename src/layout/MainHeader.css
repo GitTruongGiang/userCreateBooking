@@ -54,3 +54,53 @@ body {
 .btn-appbar:hover span {
   color: #ffff;
 }
+
+@media only screen and (min-width: 1200px) and (max-width: 1535px) {
+  .btn-appbar {
+    min-width: 110px;
+    width: -moz-fit-content;
+    width: fit-content;
+    background-color: white;
+    padding: 0 9px;
+    height: 26px;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #000000;
+    letter-spacing: 2.2px;
+    line-height: 1.4;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .btn-appbar {
+    min-width: 90px;
+    width: -moz-fit-content;
+    width: fit-content;
+    background-color: white;
+    padding: 0 10px;
+    height: 23px;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #000000;
+    letter-spacing: 0.7px;
+    line-height: 1.4;
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 600px) {
+  .btn-appbar {
+    min-width: 70px;
+    padding: 0 6px;
+    width: fit-content;
+    background-color: white;
+    height: 20px;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #000000;
+    letter-spacing: 0px;
+    line-height: 1;
+  }
+}

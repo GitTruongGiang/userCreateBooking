@@ -94,7 +94,13 @@ function ModalFlight({ open, setOpen, modalFlight }) {
               label="Infomation Flight"
               sx={{
                 color: "white",
-                fontSize: "30px",
+                fontSize: {
+                  xs: "22px",
+                  sm: "24px",
+                  md: "26px",
+                  lg: "28px",
+                  xl: "30px",
+                },
                 fontWeight: 600,
                 backgroundColor: "#29b6f6",
                 fontStyle: "italic",
@@ -233,7 +239,10 @@ function ModalFlight({ open, setOpen, modalFlight }) {
                     </Typography>
                   </Box>
                   <Box
-                    sx={{ display: "flex", justifyContent: "space-between" }}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
                   >
                     <Stack spacing={2}>
                       <Box sx={{ display: "flex", alignItems: "center" }}>

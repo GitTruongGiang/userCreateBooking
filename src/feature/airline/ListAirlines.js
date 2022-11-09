@@ -34,8 +34,13 @@ function ListAirlines() {
     <Container maxWidth="lg">
       <Card
         sx={{
-          height: "300px",
-          padding: "20px",
+          padding: {
+            xs: "5px",
+            sm: "10px",
+            md: "15px",
+            lg: "18px",
+            xl: "20px",
+          },
           boxShadow: "0 -2px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
         }}
       >
@@ -55,11 +60,18 @@ function ListAirlines() {
               >
                 <Stack
                   direction="row"
-                  spacing={1}
-                  sx={{ alignItems: "center" }}
+                  spacing={{ xs: 0, xl: 1 }}
+                  sx={{
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                  }}
                 >
                   <CardContent sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography sx={{ fontWeight: 600 }}>
+                    <Typography
+                      sx={{
+                        fontWeight: 600,
+                      }}
+                    >
                       Name Airlines
                     </Typography>
                     :<Typography sx={{ ml: 1 }}>{airline.name}</Typography>

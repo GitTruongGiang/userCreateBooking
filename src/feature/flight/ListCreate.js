@@ -44,8 +44,13 @@ function ListCreate() {
       <Container maxWidth="lg">
         <Card
           sx={{
-            height: "300px",
-            padding: "20px",
+            padding: {
+              xs: "5px",
+              sm: "10px",
+              md: "15px",
+              lg: "18px",
+              xl: "20px",
+            },
             boxShadow:
               "0 -2px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
           }}
@@ -67,7 +72,7 @@ function ListCreate() {
                   <Stack
                     direction="row"
                     spacing={1}
-                    sx={{ alignItems: "center" }}
+                    sx={{ alignItems: "center", flexWrap: "wrap" }}
                   >
                     <CardContent sx={{ display: "flex", alignItems: "center" }}>
                       <Typography sx={{ fontWeight: 600 }}>
@@ -78,7 +83,13 @@ function ListCreate() {
                         {flight.airlines.name}
                       </Typography>
                     </CardContent>
-                    <CardContent sx={{ display: "flex", alignItems: "center" }}>
+                    <CardContent
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginLeft: 0,
+                      }}
+                    >
                       <Typography sx={{ fontWeight: 600 }}>
                         Name Plane
                       </Typography>
@@ -93,6 +104,7 @@ function ListCreate() {
                         display: "flex",
                         alignItems: "center",
                         paddingBottom: "16px",
+                        marginLeft: 0,
                       }}
                     >
                       <Typography sx={{ fontWeight: 600 }}>
@@ -106,7 +118,7 @@ function ListCreate() {
                   </Stack>
                   <Box>
                     <Button
-                      sx={{ mr: 1, height: "30px" }}
+                      sx={{ mr: 1, mb: 1, height: "30px" }}
                       variant="contained"
                       onClick={() => handleOpen(flight)}
                     >

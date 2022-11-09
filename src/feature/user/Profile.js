@@ -25,7 +25,6 @@ function Profile() {
       maxWidth="lg"
       sx={{
         backgroundColor: "white",
-        height: 800,
         padding: "20px",
         borderRadius: "10px",
       }}

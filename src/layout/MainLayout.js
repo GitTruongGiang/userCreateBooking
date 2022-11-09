@@ -7,29 +7,31 @@ import MainHeader from "./MainHeader";
 
 function MainLayout() {
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         margin: "0 auto",
         position: "relative",
+        width: "100%",
+        height: "100vh",
       }}
     >
       <MainHeader />
       <AlertMsg />
-      <Box sx={{ paddingTop: "50px" }}>
-        <Outlet />
-      </Box>
-      <Container
-        maxWidth="xl"
+      <Box
         sx={{
-          backgroundColor: "#24292e",
-          marginTop: "100px",
-          color: "white",
-          paddingBottom: "24px",
+          paddingTop: {
+            xs: "30px",
+            sm: "35px",
+            md: "40px",
+            lg: "45px",
+            xl: "50px",
+          },
         }}
       >
-        <MainFooter />
-      </Container>
-    </div>
+        <Outlet />
+      </Box>
+      <MainFooter />
+    </Box>
   );
 }
 

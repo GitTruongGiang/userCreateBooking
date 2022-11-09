@@ -226,69 +226,127 @@ function MainHeader() {
         top: 0,
         position: "sticky",
         zIndex: 99,
-        paddingTop: "100px",
+        paddingTop: {
+          xs: "50px",
+          sm: "70px",
+          md: "80px",
+          lg: "90px",
+          xl: "100px",
+        },
       }}
     >
+      <Drawer anchor="left" open={toggle} onClose={toggleDrawer(false)}>
+        {list()}
+      </Drawer>
       <AppBar
         variant="elevation"
-        style={{ backgroundColor: "rgb(35,36,36)", color: "white" }}
+        sx={{
+          backgroundColor: "rgb(35,36,36)",
+          color: "white",
+          // height: { xs: 45, sm: 40, md: 55, lg: 64, xl: 68 },
+        }}
       >
-        <Drawer anchor="left" open={toggle} onClose={toggleDrawer(false)}>
-          {list()}
-        </Drawer>
-        <Toolbar sx={{ mr: 3, ml: 3 }}>
+        <Toolbar
+          sx={{
+            mr: { xs: 1, sm: 1.5, md: 2, lg: 2.5, xl: 3 },
+            ml: { xs: 1, sm: 1.5, md: 2, lg: 2.5, xl: 3 },
+            paddingLeft: {
+              xs: "2px",
+              sm: "6px",
+              md: "16px",
+              lg: "20px",
+              xl: "24px",
+            },
+            paddingRight: {
+              xs: "2px",
+              sm: "6px",
+              md: "16px",
+              lg: "20px",
+              xl: "24px",
+            },
+          }}
+        >
           <IconButton
-            size="large"
+            size="small"
             edge="start"
             color="secondary"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: { xs: 0, sm: 1, md: 1.6, lg: 1.8, xl: 2 } }}
             onClick={toggleDrawer(true)}
           >
             <MenuIcon
               sx={{
                 ":hover": { color: "#f44336" },
                 color: "#1e88e5",
+                fontSize: {
+                  xs: "1.2rem",
+                  sm: "1.35rem",
+                  md: "1.4rem",
+                  lg: "1.45rem",
+                  xl: "1.5rem",
+                },
               }}
             />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, color: "white" }}
+            sx={{
+              flexGrow: 1,
+              color: "white",
+              fontSize: {
+                xs: "0.9rem",
+                sm: "1.1rem",
+                md: "1.15rem",
+                lg: "1.2rem",
+                xl: "1.25rem",
+              },
+            }}
           >
             Travel Booking
-            <FlightTakeoffIcon sx={{ color: "#1e88e5", ml: 0.5 }} />
+            <FlightTakeoffIcon
+              sx={{
+                color: "#1e88e5",
+                ml: { xs: 0.1, sm: 0.2, md: 0.3, lg: 0.4, xl: 0.5 },
+                fontSize: {
+                  xs: "1rem",
+                  sm: "1.2rem",
+                  md: "1.3rem",
+                  lg: "1.4rem",
+                  xl: "1.5rem",
+                },
+              }}
+            />
           </Typography>
           <Box
             component="button"
             className="btn-appbar"
             sx={{
-              mr: 2,
+              mr: { xs: 1, sm: 1.2, md: 1.6, lg: 1.8, xl: 2 },
             }}
             onClick={handleListCreateAirlines}
           >
-            <span> List Create-Airlines</span>
+            <span> List Airlines</span>
           </Box>
           <Box
             component="button"
             className="btn-appbar"
             sx={{
-              mr: 2,
+              mr: { xs: 1, sm: 1.2, md: 1.6, lg: 1.8, xl: 2 },
             }}
             onClick={handleListCreatePlane}
           >
-            <span>List Plane-Flight</span>
+            <span>List Plane</span>
           </Box>
           <Box
             component="button"
             className="btn-appbar"
             sx={{
-              mr: 2,
+              mr: { xs: 1, sm: 1.2, md: 1.6, lg: 1.8, xl: 2 },
             }}
             onClick={handleListCreate}
           >
-            <span>List Create-Flight</span>
+            <span>List Flight</span>
           </Box>
           <Box>
             <Avatar
@@ -296,8 +354,8 @@ function MainHeader() {
               src={user?.avatarUrl}
               alt={user?.name}
               sx={{
-                width: 32,
-                height: 32,
+                width: { xs: 25, sm: 26, md: 28, lg: 30, xl: 32 },
+                height: { xs: 25, sm: 26, md: 28, lg: 30, xl: 32 },
                 cursor: "pointer",
                 ":hover": { backgroundColor: "#1e88e5" },
               }}

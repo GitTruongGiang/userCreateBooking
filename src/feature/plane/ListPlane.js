@@ -37,12 +37,17 @@ function ListPlane() {
     <Container maxWidth="lg">
       <Card
         sx={{
-          height: "300px",
-          padding: "20px",
+          padding: {
+            xs: "5px",
+            sm: "10px",
+            md: "15px",
+            lg: "18px",
+            xl: "20px",
+          },
           boxShadow: "0 -2px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
         }}
       >
-        <CardContent>
+        <CardContent sx={{ padding: { xs: "14px", xl: "16px" } }}>
           <Typography sx={{ fontSize: "20px" }}>danh sách máy bay</Typography>
           {planes.length &&
             planes.map((plane) => (
@@ -57,7 +62,7 @@ function ListPlane() {
                 <Stack
                   direction="row"
                   spacing={1}
-                  sx={{ alignItems: "center" }}
+                  sx={{ alignItems: "center", flexWrap: "wrap" }}
                 >
                   <CardContent sx={{ display: "flex", alignItems: "center" }}>
                     <Typography sx={{ fontWeight: 600 }}>
@@ -66,19 +71,21 @@ function ListPlane() {
                     :<Typography sx={{ ml: 1 }}>{plane.name}</Typography>
                   </CardContent>
                   <CardContent
-                    sx={{
+                    style={{
                       display: "flex",
                       alignItems: "center",
+                      marginLeft: 0,
                     }}
                   >
                     <Typography sx={{ fontWeight: 600 }}>Code Plane</Typography>
                     :<Typography sx={{ ml: 1 }}>{plane.codePlane}</Typography>
                   </CardContent>
                   <CardContent
-                    sx={{
+                    style={{
                       display: "flex",
                       alignItems: "center",
                       paddingBottom: "16px",
+                      marginLeft: 0,
                     }}
                   >
                     <Typography sx={{ fontWeight: 600 }}>
@@ -87,9 +94,9 @@ function ListPlane() {
                     :<Typography sx={{ ml: 1 }}>{plane.chairCount}</Typography>
                   </CardContent>
                 </Stack>
-                <Box>
+                <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                   <Button
-                    sx={{ mr: 1, height: "30px" }}
+                    sx={{ mr: 1, mb: 1, height: "30px" }}
                     variant="contained"
                     onClick={() => handleOpen(plane)}
                   >
