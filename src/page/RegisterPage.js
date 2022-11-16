@@ -155,6 +155,7 @@ function RegisterPage() {
                 <TextField
                   autoComplete="off"
                   fullWidth
+                  type="number"
                   label="Phone Numeber"
                   {...field}
                   error={!!error}
