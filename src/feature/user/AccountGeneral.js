@@ -173,6 +173,7 @@ function AccountGeneral() {
                   return (
                     <TextField
                       fullWidth
+                      type="number"
                       label="Phone"
                       {...field}
                       error={!!error}

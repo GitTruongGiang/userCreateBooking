@@ -7,6 +7,10 @@ import {
   FormHelperText,
   TextField,
   Typography,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import useAuth from "../../hooks/useAuth";
@@ -15,20 +19,24 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { createPlane } from "./planeSlice";
+import { useEffect } from "react";
+import appService from "../../app/appService";
+import { useState } from "react";
 
 const defaultValues = {
   namePlanes: "",
-  nameAirlines: "",
   codePlane: "",
 };
 
 const UpdateUserSchema = yup.object().shape({
   namePlanes: yup.string().required("NamePlanes is required"),
-  nameAirlines: yup.string().required("NameAirlines is required"),
   codePlane: yup.string().required("codePlane is required"),
 });
 
 function CreatePlane() {
+  const [open, setOpen] = React.useState(false);
+  const [airlines, setAirlines] = useState("");
+  const [id, setId] = useState("");
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
     defaultValues,
@@ -42,9 +50,22 @@ function CreatePlane() {
 
   const dispatch = useDispatch();
   const { planeId } = useSelector((state) => state.planes);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const response = await appService.get("/airlines/acount/list/airlines");
+      setAirlines(response.data.data.airlines);
+    };
+    fetch();
+  }, []);
+
+  const handleChangeId = (e) => {
+    setId(e.target.value);
+  };
+
   const onSubmit = (data) => {
-    const { namePlanes, nameAirlines, codePlane } = data;
-    dispatch(createPlane({ namePlanes, nameAirlines, codePlane }));
+    const { namePlanes, codePlane } = data;
+    dispatch(createPlane({ namePlanes, id, codePlane }));
     reset();
   };
   return (
@@ -101,22 +122,23 @@ function CreatePlane() {
                   );
                 }}
               />
-              <Controller
-                control={control}
-                name="nameAirlines"
-                render={({ field, fieldState: { error } }) => {
-                  return (
-                    <TextField
-                      fullWidth
-                      autoComplete="off"
-                      label="name Airlines"
-                      {...field}
-                      error={!!error}
-                      helperText={error?.message}
-                    />
-                  );
-                }}
-              />
+              <FormControl>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Name Airlines
+                </InputLabel>
+                <Select
+                  label="Name Airlines"
+                  value={id}
+                  onChange={handleChangeId}
+                >
+                  {airlines &&
+                    airlines.map((airline) => (
+                      <MenuItem value={airline?._id} key={airline._id}>
+                        {airline?.name}
+                      </MenuItem>
+                    ))}
+                </Select>
+              </FormControl>
             </Box>
 
             <Stack spacing={3} alignItems="flex-end" sx={{ mt: 3 }}>

@@ -23,7 +23,7 @@ appService.interceptors.response.use(
   },
   (err) => {
     console.log("response Error", err);
-    return Promise.reject(err);
+    return Promise.reject(err.response.data.errors);
   }
 );
 

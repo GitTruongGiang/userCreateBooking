@@ -34,11 +34,13 @@ function ListCreate() {
   const handleDeletedFlight = async (flightId) => {
     dispatch(deletedFlight(flightId));
   };
+
   useEffect(() => {
     dispatch(getListCreateFlight({ page, limit }));
   }, [dispatch, page, limit]);
 
   const { flights, count, totalPage } = useSelector((state) => state.flights);
+  console.log(flights);
   return (
     <>
       <Container maxWidth="lg">
@@ -59,83 +61,90 @@ function ListCreate() {
             <Typography sx={{ fontSize: "20px" }}>
               list tạo chuyến bay
             </Typography>
-            {flights.length &&
-              flights.map((flight) => (
-                <Card
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                  key={flight.codePlane}
-                >
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    sx={{ alignItems: "center", flexWrap: "wrap" }}
+            {flights.length
+              ? flights.map((flight) => (
+                  <Card
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                    key={flight.codePlane}
                   >
-                    <CardContent sx={{ display: "flex", alignItems: "center" }}>
-                      <Typography sx={{ fontWeight: 600 }}>
-                        Name Airlines
-                      </Typography>
-                      :
-                      <Typography sx={{ ml: 1 }}>
-                        {flight.airlines.name}
-                      </Typography>
-                    </CardContent>
-                    <CardContent
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginLeft: 0,
-                      }}
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      sx={{ alignItems: "center", flexWrap: "wrap" }}
                     >
-                      <Typography sx={{ fontWeight: 600 }}>
-                        Name Plane
-                      </Typography>
-                      :
-                      <Typography sx={{ ml: 1 }}>
-                        {flight.plane.name}
-                      </Typography>
-                    </CardContent>
+                      <CardContent
+                        sx={{ display: "flex", alignItems: "center" }}
+                      >
+                        <Typography sx={{ fontWeight: 600 }}>
+                          Name Airlines
+                        </Typography>
+                        :
+                        <Typography sx={{ ml: 1 }}>
+                          {flight.airlines?.name}
+                        </Typography>
+                      </CardContent>
+                      <CardContent
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          marginLeft: 0,
+                        }}
+                      >
+                        <Typography sx={{ fontWeight: 600 }}>
+                          Name Plane
+                        </Typography>
+                        :
+                        <Typography sx={{ ml: 1 }}>
+                          {flight.plane?.name}
+                        </Typography>
+                      </CardContent>
 
-                    <CardContent
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        paddingBottom: "16px",
-                        marginLeft: 0,
-                      }}
-                    >
-                      <Typography sx={{ fontWeight: 600 }}>
-                        code Plane
-                      </Typography>
-                      :
-                      <Typography sx={{ ml: 1 }}>
-                        {flight.plane.codePlane}
-                      </Typography>
-                    </CardContent>
-                  </Stack>
-                  <Box sx={{ display: "flex" }}>
-                    <Button
-                      sx={{ mr: 1, mb: 1, height: "30px" }}
-                      variant="contained"
-                      onClick={() => handleOpen(flight)}
-                    >
-                      Details
-                      <ChevronRightIcon />
-                    </Button>
-                    <Button
-                      sx={{ mr: 2, height: "30px", backgroundColor: "#f64444" }}
-                      variant="contained"
-                      onClick={() => handleDeletedFlight(flight._id)}
-                    >
-                      Deleted
-                      <ChevronRightIcon />
-                    </Button>
-                  </Box>
-                </Card>
-              ))}
+                      <CardContent
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          paddingBottom: "16px",
+                          marginLeft: 0,
+                        }}
+                      >
+                        <Typography sx={{ fontWeight: 600 }}>
+                          code Plane
+                        </Typography>
+                        :
+                        <Typography sx={{ ml: 1 }}>
+                          {flight.plane?.codePlane}
+                        </Typography>
+                      </CardContent>
+                    </Stack>
+                    <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                      <Button
+                        sx={{ mr: 1, mb: 1, height: "30px" }}
+                        variant="contained"
+                        onClick={() => handleOpen(flight)}
+                      >
+                        Details
+                        <ChevronRightIcon />
+                      </Button>
+                      <Button
+                        sx={{
+                          mr: 2,
+                          height: "30px",
+                          backgroundColor: "#f64444",
+                        }}
+                        variant="contained"
+                        onClick={() => handleDeletedFlight(flight._id)}
+                      >
+                        Deleted
+                        <ChevronRightIcon />
+                      </Button>
+                    </Box>
+                  </Card>
+                ))
+              : "0"}
           </CardContent>
           <Pagination count={totalPage} page={page} onChange={handleChange} />
         </Card>

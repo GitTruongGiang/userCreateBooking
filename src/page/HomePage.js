@@ -29,48 +29,46 @@ function HomePage() {
     },
   ];
   return (
-    <Container maxWidth="">
-      <Container
-        maxWidth="lg"
-        sx={{
-          backgroundColor: "white",
-          padding: "20px",
-          borderRadius: "10px",
-        }}
+    <Container
+      maxWidth="lg"
+      sx={{
+        backgroundColor: "white",
+        padding: "20px",
+        borderRadius: "10px",
+      }}
+    >
+      <Box sx={{ mb: 2 }}>
+        <Typography variant="h5" gutterBottom>
+          Travel Booking
+        </Typography>
+        {/* <Typography sx={{ color: "red" }}>
+          tạo theo thứ tự từ trái qua phải
+        </Typography> */}
+      </Box>
+      <Tabs
+        value={currentTab}
+        scrollButtons="auto"
+        variant="scrollable"
+        allowScrollButtonsMobile
+        onChange={(e, value) => setCurrentTab(value)}
+        sx={{ textAlign: "center" }}
       >
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="h5" gutterBottom>
-            Travel Booking
-          </Typography>
-          <Typography sx={{ color: "red" }}>
-            tạo theo thứ tự từ trái qua phải
-          </Typography>
-        </Box>
-        <Tabs
-          value={currentTab}
-          scrollButtons="auto"
-          variant="scrollable"
-          allowScrollButtonsMobile
-          onChange={(e, value) => setCurrentTab(value)}
-          sx={{ textAlign: "center" }}
-        >
-          {ACCOUNT_TABS.map((tab) => (
-            <Tab
-              disableRipple
-              key={tab.value}
-              label={capitalCase(tab.value)}
-              icon={tab.icon}
-              value={tab.value}
-            />
-          ))}
-        </Tabs>
-        <Box sx={{ mb: 5 }} />
+        {ACCOUNT_TABS.map((tab) => (
+          <Tab
+            disableRipple
+            key={tab.value}
+            label={capitalCase(tab.value)}
+            icon={tab.icon}
+            value={tab.value}
+          />
+        ))}
+      </Tabs>
+      <Box sx={{ mb: 5 }} />
 
-        {ACCOUNT_TABS.map((tab) => {
-          const isMatched = tab.value === currentTab;
-          return isMatched && <Box key={tab.value}>{tab.component}</Box>;
-        })}
-      </Container>
+      {ACCOUNT_TABS.map((tab) => {
+        const isMatched = tab.value === currentTab;
+        return isMatched && <Box key={tab.value}>{tab.component}</Box>;
+      })}
     </Container>
   );
 }

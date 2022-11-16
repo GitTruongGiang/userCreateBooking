@@ -4,19 +4,19 @@ import appService from "../../app/appService";
 
 const initialState = {
   isLoading: false,
-  planes: {},
+  planes: [],
   count: 0,
   totalPage: 0,
 };
 
 export const createPlane = createAsyncThunk(
   "plane/createPlane",
-  async ({ namePlanes, nameAirlines, codePlane }, { rejectWithValue }) => {
+  async ({ namePlanes, id, codePlane }, { rejectWithValue }) => {
     try {
       const url = `/planes`;
       const response = await appService.post(url, {
         name: namePlanes,
-        nameAirlines,
+        id,
         codePlane,
       });
       return response.data;
@@ -47,6 +47,35 @@ export const deletedPlane = createAsyncThunk(
     try {
       const url = `/planes/${planeId}`;
       const response = await appService.delete(url);
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+);
+
+export const updatePlane = createAsyncThunk(
+  "plane/updateplane",
+  async ({ planeId, namePlane, chairCount }, { rejectWithValue }) => {
+    try {
+      const url = `/planes/acount/update/${planeId}`;
+      const response = await appService.put(url, {
+        name: namePlane,
+        chairCount: parseInt(chairCount),
+      });
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+);
+
+export const listPlaneOfAirline = createAsyncThunk(
+  "plane/listPlaneOfAirline",
+  async ({ airlineId, page, limit }, { rejectWithValue }) => {
+    try {
+      const url = `/planes/acount/listPlaneOfAirline/${airlineId}?page=${page}&limit=${limit}`;
+      const response = await appService.post(url);
       return response.data;
     } catch (error) {
       rejectWithValue(error);
@@ -96,6 +125,33 @@ const planeSlice = createSlice({
         state.planes = planes;
       })
       .addCase(deletedPlane.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(updatePlane.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updatePlane.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const { planes } = action.payload.data;
+        state.planes = planes;
+        toast.success("update plane success");
+      })
+      .addCase(updatePlane.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(listPlaneOfAirline.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(listPlaneOfAirline.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const { planes, count, totalPage } = action.payload.data;
+        state.planes = planes;
+        state.count = count;
+        state.totalPage = totalPage;
+      })
+      .addCase(listPlaneOfAirline.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

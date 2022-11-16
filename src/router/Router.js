@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AuthRequired from "../context/AuthRequired";
 import ListAirlines from "../feature/airline/ListAirlines";
+import ListPlaneOfAirlines from "../feature/airline/ListPlaneOfAirlines";
 import ListCreate from "../feature/flight/ListCreate";
 import ListPlane from "../feature/plane/ListPlane";
 import Profile from "../feature/user/Profile";
@@ -28,6 +29,10 @@ function Router() {
         <Route path="listcreate" element={<ListCreate />} />
         <Route path="listAirlines" element={<ListAirlines />} />
         <Route path="listPlanes" element={<ListPlane />} />
+        <Route
+          path="listPlanesOfAirlines/:airlineId"
+          element={<ListPlaneOfAirlines />}
+        />
       </Route>
       <Route element={<BlankLayout />}>
         <Route path="login" element={<LoginPage />}></Route>

@@ -4,7 +4,7 @@ import appService from "../../app/appService";
 
 const initialState = {
   isLoading: false,
-  flights: {},
+  flights: [],
   count: 0,
   totalPage: 0,
 };
@@ -56,14 +56,14 @@ export const updateFlight = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const url = `/flights/${flightId}`;
+      const url = `/flights/acount/update/${flightId}`;
       const response = await appService.put(url, {
         fromDay,
         from,
         to,
         timeFrom,
         timeTo,
-        price,
+        price: parseInt(price),
       });
       return response.data;
     } catch (error) {
@@ -96,8 +96,8 @@ const flightSlice = createSlice({
       })
       .addCase(createFlight.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { flight } = action.payload.data;
-        state.flights = flight;
+        const { flights } = action.payload.data;
+        state.flights = flights;
         toast.success("create flight success");
       })
       .addCase(createFlight.rejected, (state, action) => {
@@ -123,6 +123,8 @@ const flightSlice = createSlice({
       })
       .addCase(updateFlight.fulfilled, (state, action) => {
         state.isLoading = false;
+        const { flights } = action.payload.data;
+        state.flights = flights;
         toast.success("update flight success");
       })
       .addCase(updateFlight.rejected, (state, action) => {

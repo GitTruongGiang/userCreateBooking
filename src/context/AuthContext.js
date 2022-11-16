@@ -51,7 +51,6 @@ const setSession = async (accessToken) => {
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   useEffect(() => {
     const isInitialized = async () => {
       const accessToken = window.localStorage.getItem("accessToken");

@@ -14,16 +14,15 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { countrys } from "../../list";
 import dayjs from "dayjs";
 import { createFlight } from "./flightSlice";
+import { useNavigate } from "react-router-dom";
 
 const defaultValues = {
   planeId: "",
-  nameAirlines: "",
   price: "",
 };
 
 const UpdateUserSchema = yup.object().shape({
   planeId: yup.string().required("planeId is required"),
-  nameAirlines: yup.string().required("NameAirlines is required"),
   price: yup.number().required("price is required"),
 });
 
@@ -33,6 +32,7 @@ function CreateFlight() {
   const [timeTo, setTimeTo] = useState(null);
   const [from, setFrom] = useState("SG");
   const [to, setTo] = useState("HN");
+  const navigate = useNavigate();
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
     defaultValues,
@@ -47,14 +47,12 @@ function CreateFlight() {
   const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    const { nameAirlines, planeId, price } = data;
+    const { planeId, price } = data;
     const date = fromDay.get("date");
     const month = fromDay.get("month");
     const year = fromDay.get("year");
     dispatch(
       createFlight({
-        nameAirlines,
         planeId,
         from,
         to,
@@ -77,6 +75,7 @@ function CreateFlight() {
       })
     );
     reset();
+    navigate("/listcreate");
   };
 
   return (
@@ -101,22 +100,6 @@ function CreateFlight() {
                 },
               }}
             >
-              <Controller
-                control={control}
-                name="nameAirlines"
-                render={({ field, fieldState: { error } }) => {
-                  return (
-                    <TextField
-                      fullWidth
-                      autoComplete="off"
-                      label="name Airlines"
-                      {...field}
-                      error={!!error}
-                      helperText={error?.message}
-                    />
-                  );
-                }}
-              />
               <Controller
                 control={control}
                 name="planeId"
@@ -177,6 +160,7 @@ function CreateFlight() {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   label="From Day"
+                  disablePast
                   value={fromDay}
                   onChange={(newValue) => {
                     setFromDay(newValue);
@@ -216,6 +200,7 @@ function CreateFlight() {
                       fullWidth
                       autoComplete="off"
                       label="Price"
+                      type="number"
                       {...field}
                       error={!!error}
                       helperText={error?.message}

@@ -3,20 +3,22 @@ import {
   Button,
   Card,
   CardContent,
-  Container,
   Pagination,
   Stack,
   Typography,
 } from "@mui/material";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deletedPlane, getListCreatePlane } from "./planeSlice";
-import ModalPlane from "./ModalPlane";
+import { useParams } from "react-router-dom";
+import { deletedPlane, listPlaneOfAirline } from "../plane/planeSlice";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ModalPlane from "../plane/ModalPlane";
 
-function ListPlane() {
-  const [page, setPage] = React.useState(1);
+function ListPlaneOfAirlines() {
+  const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+  const { airlineId } = useParams();
   const [open, setOpen] = React.useState(false);
   const [dataPlane, setDataPlane] = useState("");
   const handleOpen = (plane) => {
@@ -24,19 +26,21 @@ function ListPlane() {
     setOpen(true);
   };
 
+  const dispatch = useDispatch();
+
   const handleChange = (event, value) => {
     setPage(value);
   };
+
   const handleDeletedPlane = async (planeId) => {
     dispatch(deletedPlane(planeId));
   };
-  const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getListCreatePlane({ page, limit }));
-  }, [dispatch, page, limit]);
-
+    dispatch(listPlaneOfAirline({ airlineId, page, limit }));
+  }, []);
   const { planes, count, totalPage } = useSelector((state) => state.planes);
-
+  console.log(totalPage);
   return (
     <Container maxWidth="lg">
       <Card
@@ -52,7 +56,9 @@ function ListPlane() {
         }}
       >
         <CardContent sx={{ padding: { xs: "14px", xl: "16px" } }}>
-          <Typography sx={{ fontSize: "20px" }}>danh sách máy bay</Typography>
+          <Typography sx={{ fontSize: "20px" }}>
+            danh sách máy bay hãng {planes[0]?.authorAirlines?.name}
+          </Typography>
           {planes.length &&
             planes.map((plane) => (
               <Card
@@ -126,4 +132,4 @@ function ListPlane() {
   );
 }
 
-export default ListPlane;
+export default ListPlaneOfAirlines;

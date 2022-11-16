@@ -4,13 +4,15 @@ import appService from "../../app/appService";
 const initialState = {
   isLoading: false,
   chairs: [],
+  count: 0,
+  totalPage: 0,
 };
 
 export const listChair = createAsyncThunk(
   "chair/listchair",
-  async ({ flightId }, { rejectWithValue }) => {
+  async ({ flightId, page, limit }, { rejectWithValue }) => {
     try {
-      const url = `/chairs/acount/${flightId}`;
+      const url = `/chairs/acount/${flightId}?page=${page}&limit=${limit}`;
       const response = await appService.post(url);
       return response.data;
     } catch (error) {
@@ -24,7 +26,7 @@ export const deletedChair = createAsyncThunk(
   async ({ chairId, status }, { rejectWithValue }) => {
     try {
       const url = `/chairs/acount/${chairId}`;
-      const response = await appService.delete(url, { status });
+      const response = await appService.put(url, { status });
       return response.data;
     } catch (error) {
       rejectWithValue(error);
@@ -43,8 +45,10 @@ const chairSlice = createSlice({
       })
       .addCase(listChair.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { chairs } = action.payload.data;
+        const { chairs, count, totalPage } = action.payload.data;
         state.chairs = chairs;
+        state.count = count;
+        state.totalPage = totalPage;
       })
       .addCase(listChair.rejected, (state, action) => {
         state.error = action.error.message;

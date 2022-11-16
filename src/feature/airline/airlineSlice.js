@@ -49,6 +49,22 @@ export const deleteAirlines = createAsyncThunk(
   }
 );
 
+export const updateAirline = createAsyncThunk(
+  "airlines/updateAirline",
+  async ({ airlineId, nameAirline }, { rejectWithValue }) => {
+    try {
+      console.log(airlineId, nameAirline);
+      const url = `/airlines/acount/update/${airlineId}`;
+      const response = await appService.put(url, {
+        name: nameAirline,
+      });
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+);
+
 const airlineSlice = createSlice({
   name: "airlines",
   initialState,
@@ -92,6 +108,19 @@ const airlineSlice = createSlice({
         toast.success("deleted airline success");
       })
       .addCase(deleteAirlines.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(updateAirline.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updateAirline.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const { airlines } = action.payload.data;
+        state.airlines = airlines;
+        toast.success("update airline success");
+      })
+      .addCase(updateAirline.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
