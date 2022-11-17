@@ -1,9 +1,11 @@
 import {
   Box,
   Button,
+  Chip,
   Grid,
   Modal,
   Pagination,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -55,6 +57,7 @@ function ModalChair({ setOpenChairModal, openChairModal, dataChair }) {
       <Box sx={styleChairModal}>
         <Grid container spacing={2} columns={12}>
           {chairs.map((chair) => {
+            console.log(chair);
             return (
               <Grid item xs={4} key={chair._id}>
                 <Box>
@@ -62,12 +65,25 @@ function ModalChair({ setOpenChairModal, openChairModal, dataChair }) {
                     Ghế: {chair.codeNumber}
                     {chair.codeString}
                   </Typography>
-                  <Typography>người đặt: {chair.user?.name}</Typography>
+                  <Stack
+                    spacing={1}
+                    direction="row"
+                    sx={{ flexWrap: "wrap", alignItems: "center" }}
+                  >
+                    <Typography>người đặt:</Typography>
+                    <Typography
+                      sx={{
+                        fontSize: { xs: "12px", xl: "18px" },
+                        fontWeight: 600,
+                      }}
+                    >
+                      {chair.user?.name}
+                    </Typography>
+                  </Stack>
                   <Button
                     variant="contained"
                     sx={{
-                      fontSize: { xs: "10px", xl: "18px" },
-                      height: "50px",
+                      fontSize: { xs: "10px", xl: "16px" },
                       ":hover": {
                         backgroundColor: "#ef5350",
                         color: "white",
