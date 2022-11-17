@@ -4,7 +4,8 @@ import appService from "../../app/appService";
 
 const initialState = {
   isLoading: false,
-  airlines: {},
+  airlines: [],
+  airline: {},
   count: 0,
   totalPage: 0,
 };
@@ -76,8 +77,8 @@ const airlineSlice = createSlice({
       })
       .addCase(createAirlines.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { airlines } = action.payload.data;
-        state.airlines = airlines;
+        const { airline } = action.payload.data;
+        state.airline = airline;
         toast.success("create airline success");
       })
       .addCase(createAirlines.rejected, (state, action) => {

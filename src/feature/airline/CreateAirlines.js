@@ -37,8 +37,8 @@ function CreateAirlines() {
   } = methods;
 
   const dispatch = useDispatch();
-  const { airlines } = useSelector((state) => state.airlines);
-  console.log(airlines);
+  const { airline } = useSelector((state) => state.airlines);
+  console.log(airline);
   const onSubmit = (data) => {
     const { name, imageUrl } = data;
     dispatch(createAirlines({ name, imageUrl }));
