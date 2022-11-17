@@ -98,7 +98,7 @@ function CreatePlane() {
                     <TextField
                       fullWidth
                       autoComplete="off"
-                      label="Name Planes"
+                      label="Tên Máy Bay"
                       {...field}
                       error={!!error}
                       helperText={error?.message}
@@ -114,7 +114,7 @@ function CreatePlane() {
                     <TextField
                       fullWidth
                       autoComplete="off"
-                      label="code Plane"
+                      label="Mã Máy Bay"
                       {...field}
                       error={!!error}
                       helperText={error?.message}
@@ -124,10 +124,10 @@ function CreatePlane() {
               />
               <FormControl>
                 <InputLabel id="demo-simple-select-helper-label">
-                  Name Airlines
+                  Hãng Máy Bay
                 </InputLabel>
                 <Select
-                  label="Name Airlines"
+                  label="Hãng Máy Bay"
                   value={id}
                   onChange={handleChangeId}
                 >
@@ -148,12 +148,12 @@ function CreatePlane() {
                 loading={isSubmitting}
                 sx={{ ":hover": { backgroundColor: "#f44336" } }}
               >
-                Create
+                Tạo
               </LoadingButton>
             </Stack>
             {planeId ? (
               <Typography>
-                copy ID Plane để tạo Flight:
+                copy ID Máy Bay để tạo Chuyến Bay:
                 <Box component="span" sx={{ color: "#f44336", ml: 1 }}>
                   {planeId}
                 </Box>

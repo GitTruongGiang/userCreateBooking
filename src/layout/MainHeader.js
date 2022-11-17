@@ -243,7 +243,6 @@ function MainHeader() {
         sx={{
           backgroundColor: "rgb(35,36,36)",
           color: "white",
-          // height: { xs: 45, sm: 40, md: 55, lg: 64, xl: 68 },
         }}
       >
         <Toolbar
@@ -326,7 +325,7 @@ function MainHeader() {
             }}
             onClick={handleListCreateAirlines}
           >
-            <span> List Airlines</span>
+            <span> Danh Sách Hãng </span>
           </Box>
           <Box
             component="button"
@@ -336,7 +335,7 @@ function MainHeader() {
             }}
             onClick={handleListCreatePlane}
           >
-            <span>List Plane</span>
+            <span>Danh Sách Máy Bay</span>
           </Box>
           <Box
             component="button"
@@ -346,7 +345,7 @@ function MainHeader() {
             }}
             onClick={handleListCreate}
           >
-            <span>List Flight</span>
+            <span>Danh Sách Chuyến Bay</span>
           </Box>
           <Box>
             <Avatar
@@ -388,11 +387,11 @@ function MainHeader() {
               </Box>
               <Divider sx={{ borderStyle: "dashed" }} />
               <MenuItem onClick={handleProfile} sx={{ mx: 1 }}>
-                Profile
+                Thông Tin
               </MenuItem>
               <Divider sx={{ borderStyle: "dashed" }} />
               <MenuItem onClick={handleClick} sx={{ m: 1 }}>
-                Logout
+                Đăng Xuất
               </MenuItem>
             </Menu>
           </Box>

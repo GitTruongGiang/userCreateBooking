@@ -59,7 +59,7 @@ function ListCreate() {
         >
           <CardContent>
             <Typography sx={{ fontSize: "20px" }}>
-              list tạo chuyến bay
+              Danh Sách Chuyến Bay
             </Typography>
             {flights.length
               ? flights.map((flight) => (
@@ -80,7 +80,7 @@ function ListCreate() {
                         sx={{ display: "flex", alignItems: "center" }}
                       >
                         <Typography sx={{ fontWeight: 600 }}>
-                          Name Airlines
+                          Tên Hãng
                         </Typography>
                         :
                         <Typography sx={{ ml: 1 }}>
@@ -95,7 +95,7 @@ function ListCreate() {
                         }}
                       >
                         <Typography sx={{ fontWeight: 600 }}>
-                          Name Plane
+                          Tên Máy Bay
                         </Typography>
                         :
                         <Typography sx={{ ml: 1 }}>
@@ -112,7 +112,7 @@ function ListCreate() {
                         }}
                       >
                         <Typography sx={{ fontWeight: 600 }}>
-                          code Plane
+                          Mã Máy Bay
                         </Typography>
                         :
                         <Typography sx={{ ml: 1 }}>
@@ -126,7 +126,7 @@ function ListCreate() {
                         variant="contained"
                         onClick={() => handleOpen(flight)}
                       >
-                        Details
+                        Chi Tiết
                         <ChevronRightIcon />
                       </Button>
                       <Button
@@ -138,7 +138,7 @@ function ListCreate() {
                         variant="contained"
                         onClick={() => handleDeletedFlight(flight._id)}
                       >
-                        Deleted
+                        Xóa
                         <ChevronRightIcon />
                       </Button>
                     </Box>

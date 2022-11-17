@@ -65,7 +65,7 @@ function ModalAirlines({ open, setOpen, dataAirline }) {
               fontWeight: 600,
             }}
           >
-            Airline
+            Hãng Hàng Không
           </Typography>
 
           <Stack
@@ -76,13 +76,13 @@ function ModalAirlines({ open, setOpen, dataAirline }) {
             <Box>
               <Stack spacing={2} direction="column">
                 <TextField
-                  label="Name Airline"
+                  label="Tên Hãng"
                   autoComplete="off"
                   defaultValue={dataAirline?.name}
                   onChange={handleChangeName}
                 />
                 <TextField
-                  label="Plane Count"
+                  label="Số Máy Bay"
                   type="number"
                   defaultValue={dataAirline?.countPlane}
                   InputProps={{ readOnly: true }}
@@ -93,13 +93,20 @@ function ModalAirlines({ open, setOpen, dataAirline }) {
               <Stack spacing={2} direction="column">
                 <Button
                   variant="contained"
-                  sx={{ backgroundColor: "#e74c3c" }}
+                  sx={{
+                    backgroundColor: "#e74c3c",
+                    textTransform: "capitalize",
+                  }}
                   onClick={handleNavigate}
                 >
-                  List Plane
+                  Danh Sách Máy Bay
                 </Button>
-                <Button variant="contained" onClick={handleUpdateAirline}>
-                  Update
+                <Button
+                  variant="contained"
+                  onClick={handleUpdateAirline}
+                  sx={{ textTransform: "capitalize" }}
+                >
+                  Thay Đổi
                 </Button>
               </Stack>
             </Box>

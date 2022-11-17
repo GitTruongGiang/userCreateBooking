@@ -59,8 +59,8 @@ function ListAirlines() {
           }}
         >
           <CardContent>
-            <Typography sx={{ fontSize: "20px" }}>
-              danh sach hang may bay
+            <Typography sx={{ fontSize: "20px", textTransform: "capitalize" }}>
+              danh sách máy bay
             </Typography>
             {airlines.length &&
               airlines.map((airline) => (
@@ -86,7 +86,7 @@ function ListAirlines() {
                           fontWeight: 600,
                         }}
                       >
-                        Name Airlines
+                        Tên Hãng
                       </Typography>
                       :<Typography sx={{ ml: 1 }}>{airline.name}</Typography>
                     </CardContent>
@@ -98,7 +98,7 @@ function ListAirlines() {
                       }}
                     >
                       <Typography sx={{ fontWeight: 600 }}>
-                        Count Plane
+                        Số Máy Bay
                       </Typography>
                       :
                       <Typography sx={{ ml: 1 }}>
@@ -112,7 +112,7 @@ function ListAirlines() {
                       variant="contained"
                       onClick={() => handleOpen(airline)}
                     >
-                      Details
+                      Chi tiết
                       <ChevronRightIcon />
                     </Button>
                     <Button
@@ -120,7 +120,7 @@ function ListAirlines() {
                       variant="contained"
                       onClick={() => handleOpenDeleted(airline._id)}
                     >
-                      Deleted
+                      Xóa
                       <ChevronRightIcon />
                     </Button>
                   </Box>

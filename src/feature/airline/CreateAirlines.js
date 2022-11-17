@@ -75,7 +75,7 @@ function CreateAirlines() {
                     <TextField
                       fullWidth
                       autoComplete="off"
-                      label="Name Airlines"
+                      label="Tên Hãng"
                       {...field}
                       error={!!error}
                       helperText={error?.message}
@@ -91,7 +91,7 @@ function CreateAirlines() {
                     <TextField
                       fullWidth
                       autoComplete="off"
-                      label="imageUrl"
+                      label="Hình Ảnh URL"
                       {...field}
                       error={!!error}
                       helperText={error?.message}
@@ -108,7 +108,7 @@ function CreateAirlines() {
                 loading={isSubmitting}
                 sx={{ ":hover": { backgroundColor: "#f44336" } }}
               >
-                Create
+                Tạo
               </LoadingButton>
             </Stack>
           </Card>

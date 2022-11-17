@@ -52,7 +52,9 @@ function ListPlane() {
         }}
       >
         <CardContent sx={{ padding: { xs: "14px", xl: "16px" } }}>
-          <Typography sx={{ fontSize: "20px" }}>danh sách máy bay</Typography>
+          <Typography sx={{ fontSize: "20px", textTransform: "capitalize" }}>
+            danh sách máy bay
+          </Typography>
           {planes.length &&
             planes.map((plane) => (
               <Card
@@ -70,7 +72,7 @@ function ListPlane() {
                 >
                   <CardContent sx={{ display: "flex", alignItems: "center" }}>
                     <Typography sx={{ fontWeight: 600 }}>
-                      Name Planes
+                      Tên Máy Bay
                     </Typography>
                     :<Typography sx={{ ml: 1 }}>{plane.name}</Typography>
                   </CardContent>
@@ -81,7 +83,7 @@ function ListPlane() {
                       marginLeft: 0,
                     }}
                   >
-                    <Typography sx={{ fontWeight: 600 }}>Code Plane</Typography>
+                    <Typography sx={{ fontWeight: 600 }}>Mã Máy Bay</Typography>
                     :<Typography sx={{ ml: 1 }}>{plane.codePlane}</Typography>
                   </CardContent>
                   <CardContent
@@ -92,10 +94,8 @@ function ListPlane() {
                       marginLeft: 0,
                     }}
                   >
-                    <Typography sx={{ fontWeight: 600 }}>
-                      Chair Count
-                    </Typography>
-                    :<Typography sx={{ ml: 1 }}>{plane.chairCount}</Typography>
+                    <Typography sx={{ fontWeight: 600 }}>Số Ghế</Typography>:
+                    <Typography sx={{ ml: 1 }}>{plane.chairCount}</Typography>
                   </CardContent>
                 </Stack>
                 <Box sx={{ display: "flex", flexWrap: "wrap" }}>
@@ -104,7 +104,7 @@ function ListPlane() {
                     variant="contained"
                     onClick={() => handleOpen(plane)}
                   >
-                    DETAILS
+                    Chi Tiết
                     <ChevronRightIcon />
                   </Button>
                   <Button
@@ -112,7 +112,7 @@ function ListPlane() {
                     variant="contained"
                     onClick={() => handleDeletedPlane(plane._id)}
                   >
-                    Deleted
+                    Xóa
                     <ChevronRightIcon />
                   </Button>
                 </Box>

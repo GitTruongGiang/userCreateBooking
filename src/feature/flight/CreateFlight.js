@@ -108,7 +108,7 @@ function CreateFlight() {
                     <TextField
                       fullWidth
                       autoComplete="off"
-                      label="Plane ID"
+                      label="ID Máy Bay"
                       {...field}
                       error={!!error}
                       helperText={error?.message}
@@ -120,7 +120,7 @@ function CreateFlight() {
               <TextField
                 select
                 fullWidth
-                label="From"
+                label="Xuất Phát"
                 size="small"
                 onChange={(event) => setFrom(event.target.value)}
                 value={from}
@@ -140,7 +140,7 @@ function CreateFlight() {
               <TextField
                 select
                 fullWidth
-                label="To"
+                label="Điểm Đến"
                 size="small"
                 onChange={(event) => setTo(event.target.value)}
                 value={to}
@@ -159,7 +159,7 @@ function CreateFlight() {
 
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  label="From Day"
+                  label="Ngày Xuất Phát"
                   disablePast
                   value={fromDay}
                   onChange={(newValue) => {
@@ -171,7 +171,7 @@ function CreateFlight() {
 
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <TimePicker
-                  label="Time From"
+                  label="Thời Gian Xuất Phát"
                   value={timeFrom}
                   onChange={(newValue) => {
                     setTimeFrom(newValue);
@@ -182,7 +182,7 @@ function CreateFlight() {
 
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <TimePicker
-                  label="Time To"
+                  label="Thời Gian Đến"
                   value={timeTo}
                   onChange={(newValue) => {
                     setTimeTo(newValue);
@@ -199,7 +199,7 @@ function CreateFlight() {
                     <TextField
                       fullWidth
                       autoComplete="off"
-                      label="Price"
+                      label="Giá Tiền"
                       type="number"
                       {...field}
                       error={!!error}
@@ -216,7 +216,7 @@ function CreateFlight() {
                 loading={isSubmitting}
                 sx={{ ":hover": { backgroundColor: "#f44336" } }}
               >
-                Create
+                Tạo
               </LoadingButton>
             </Stack>
           </Card>

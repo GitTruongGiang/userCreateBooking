@@ -10,20 +10,20 @@ import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import CreateFlight from "../feature/flight/CreateFlight";
 
 function HomePage() {
-  const [currentTab, setCurrentTab] = useState("Create_Airline");
+  const [currentTab, setCurrentTab] = useState("Tao_Hang_May_Bay");
   const ACCOUNT_TABS = [
     {
-      value: "Create_Airline",
+      value: "Tao_Hang_May_Bay",
       icon: <AirlinesIcon sx={{ fontSize: 30 }} />,
       component: <CreateAirlines />,
     },
     {
-      value: "Create_Plane",
+      value: "Tao_May_Bay",
       icon: <AirplanemodeActiveIcon sx={{ fontSize: 30 }} />,
       component: <CreatePlane />,
     },
     {
-      value: "Create_flight",
+      value: "Tao_Chuyen_Bay",
       icon: <FlightTakeoffIcon sx={{ fontSize: 30 }} />,
       component: <CreateFlight />,
     },
@@ -41,9 +41,6 @@ function HomePage() {
         <Typography variant="h5" gutterBottom>
           Travel Booking
         </Typography>
-        {/* <Typography sx={{ color: "red" }}>
-          tạo theo thứ tự từ trái qua phải
-        </Typography> */}
       </Box>
       <Tabs
         value={currentTab}

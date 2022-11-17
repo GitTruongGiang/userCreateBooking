@@ -7,15 +7,15 @@ import { capitalCase } from "change-case";
 import AccountGeneral from "./AccountGeneral";
 
 function Profile() {
-  const [currentTab, setCurrentTab] = useState("general");
+  const [currentTab, setCurrentTab] = useState("Chung");
   const ACCOUNT_TABS = [
     {
-      value: "general",
+      value: "Chung",
       icon: <AccountBoxIcon sx={{ fontSize: 30 }} />,
       component: <AccountGeneral />,
     },
     {
-      value: "social_links",
+      value: "Lien_Ket_Xa_Hoi",
       icon: <ShareIcon sx={{ fontSize: 30 }} />,
       component: <AccountSocialLinks />,
     },
@@ -30,7 +30,7 @@ function Profile() {
       }}
     >
       <Typography variant="h5" gutterBottom>
-        Profile
+        Hồ Sơ
       </Typography>
       <Tabs
         value={currentTab}

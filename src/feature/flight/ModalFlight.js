@@ -198,11 +198,19 @@ function ModalFlight({ open, setOpen, modalFlight }) {
                       {modalFlight.codePlane}
                     </Typography>
                   </Box>
-                  <Button variant="contained" onClick={handleOpenChair}>
+                  <Button
+                    variant="contained"
+                    onClick={handleOpenChair}
+                    sx={{ textTransform: "capitalize" }}
+                  >
                     Xem Ghế
                   </Button>
-                  <Button variant="contained" onClick={handleOpenUpdateFlight}>
-                    update
+                  <Button
+                    variant="contained"
+                    onClick={handleOpenUpdateFlight}
+                    sx={{ textTransform: "capitalize" }}
+                  >
+                    Thay Đổi
                   </Button>
                 </Stack>
               </Stack>

@@ -87,7 +87,7 @@ function ModalPlane({ open, setOpen, dataPlane }) {
             fontWeight: 600,
           }}
         >
-          plane
+          Máy Bay
         </Typography>
 
         <Stack
@@ -98,13 +98,13 @@ function ModalPlane({ open, setOpen, dataPlane }) {
           <Box>
             <Stack spacing={2} direction="column">
               <TextField
-                label="Name Plane"
+                label="Tên Máy Bay"
                 autoComplete="off"
                 defaultValue={dataPlane.name}
                 onChange={handleChangeName}
               />
               <TextField
-                label="Code Plane"
+                label="Mã Máy Bay"
                 defaultValue={dataPlane.codePlane}
                 InputProps={{ readOnly: true }}
               />
@@ -113,7 +113,7 @@ function ModalPlane({ open, setOpen, dataPlane }) {
           <Box>
             <Stack spacing={2} direction="column">
               <TextField
-                label="Chair Count"
+                label="Số Ghế"
                 type="number"
                 autoComplete="off"
                 defaultValue={dataPlane.chairCount}
@@ -127,7 +127,7 @@ function ModalPlane({ open, setOpen, dataPlane }) {
                     textTransform: "capitalize",
                   }}
                 >
-                  belonging to airlines:
+                  Thuộc Hãng:
                 </Typography>
                 <Typography sx={{ ml: 1 }}>
                   {dataPlane.authorAirlines?.name}
@@ -136,13 +136,17 @@ function ModalPlane({ open, setOpen, dataPlane }) {
               {id ? <Alert severity="success">{id}</Alert> : ""}
               <Button
                 variant="contained"
-                sx={{ backgroundColor: "#e74c3c" }}
+                sx={{ backgroundColor: "#e74c3c", textTransform: "capitalize" }}
                 onClick={handleId}
               >
-                Get ID
+                Lấy ID
               </Button>
-              <Button variant="contained" onClick={handleUpdatePlane}>
-                Update
+              <Button
+                variant="contained"
+                onClick={handleUpdatePlane}
+                sx={{ textTransform: "capitalize" }}
+              >
+                Thay Đổi
               </Button>
             </Stack>
           </Box>
