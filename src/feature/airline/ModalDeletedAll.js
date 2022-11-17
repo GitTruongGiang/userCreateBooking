@@ -24,6 +24,7 @@ function ModalDeletedAll({ openDeleted, setOpenDeleted, airlineId }) {
   const dispatch = useDispatch();
   const handleDeleteAirlines = async () => {
     dispatch(deleteAirlines(airlineId));
+    setOpenDeleted(false);
   };
   return (
     <Modal
