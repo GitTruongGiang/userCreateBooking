@@ -5,7 +5,6 @@ import { Box } from "@mui/system";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import CountrySelect from "../components/CountrySelect";
 
 function MainFooter() {
   return (
@@ -62,7 +61,7 @@ function MainFooter() {
               },
             }}
           >
-            Company
+            Công ty
           </Typography>
           <Stack spacing={1}>
             <Link
@@ -81,7 +80,7 @@ function MainFooter() {
                 },
               }}
             >
-              About
+              nghề nghiệp
             </Link>
             <Link
               component={routerLink}
@@ -99,7 +98,7 @@ function MainFooter() {
                 },
               }}
             >
-              Careers
+              Khám Phá
             </Link>
             <Link
               component={routerLink}
@@ -117,7 +116,7 @@ function MainFooter() {
                 },
               }}
             >
-              Mobile
+              Chúng ta làm việc như thế nào
             </Link>
             <Link
               component={routerLink}
@@ -135,7 +134,7 @@ function MainFooter() {
                 },
               }}
             >
-              Discover
+              Tại sao du khách chọn Travel Booking
             </Link>
             <Link
               component={routerLink}
@@ -153,61 +152,7 @@ function MainFooter() {
                 },
               }}
             >
-              How we work
-            </Link>
-            <Link
-              component={routerLink}
-              to=""
-              sx={{
-                color: "white",
-                textDecoration: "none",
-                ":hover": { textDecoration: "underline" },
-                fontSize: {
-                  xs: "8px",
-                  sm: "10px",
-                  md: "12px",
-                  lg: "14px",
-                  xl: "16px",
-                },
-              }}
-            >
-              Why travelers choose momondo
-            </Link>
-            <Link
-              component={routerLink}
-              to=""
-              sx={{
-                color: "white",
-                textDecoration: "none",
-                ":hover": { textDecoration: "underline" },
-                fontSize: {
-                  xs: "8px",
-                  sm: "10px",
-                  md: "12px",
-                  lg: "14px",
-                  xl: "16px",
-                },
-              }}
-            >
-              Sustainability
-            </Link>
-            <Link
-              component={routerLink}
-              to=""
-              sx={{
-                color: "white",
-                textDecoration: "none",
-                ":hover": { textDecoration: "underline" },
-                fontSize: {
-                  xs: "8px",
-                  sm: "10px",
-                  md: "12px",
-                  lg: "14px",
-                  xl: "16px",
-                },
-              }}
-            >
-              TravelBooking coupon codes
+              Mã giảm giá TravelBooking
             </Link>
           </Stack>
         </Grid>
@@ -225,7 +170,7 @@ function MainFooter() {
               },
             }}
           >
-            Contact
+            Tiếp xúc
           </Typography>
           <Stack spacing={1}>
             <Link
@@ -244,7 +189,7 @@ function MainFooter() {
                 },
               }}
             >
-              Help/FAQ
+              Trợ giúp/Hỏi đáp
             </Link>
             <Link
               component={routerLink}
@@ -262,7 +207,7 @@ function MainFooter() {
                 },
               }}
             >
-              Press
+              chi nhánh
             </Link>
             <Link
               component={routerLink}
@@ -280,25 +225,7 @@ function MainFooter() {
                 },
               }}
             >
-              Affiliates
-            </Link>
-            <Link
-              component={routerLink}
-              to=""
-              sx={{
-                color: "white",
-                textDecoration: "none",
-                ":hover": { textDecoration: "underline" },
-                fontSize: {
-                  xs: "8px",
-                  sm: "10px",
-                  md: "12px",
-                  lg: "14px",
-                  xl: "16px",
-                },
-              }}
-            >
-              Advertise with us
+              Quảng cáo với chúng tôi
             </Link>
           </Stack>
         </Grid>
@@ -316,7 +243,7 @@ function MainFooter() {
               },
             }}
           >
-            More
+            Hơn
           </Typography>
           <Stack spacing={1}>
             <Link
@@ -335,7 +262,7 @@ function MainFooter() {
                 },
               }}
             >
-              Airline fees
+              Phí Hàng Không
             </Link>
             <Link
               component={routerLink}
@@ -353,26 +280,9 @@ function MainFooter() {
                 },
               }}
             >
-              Airlines
+              hãng hàng không
             </Link>
           </Stack>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography
-            sx={{
-              mb: { xs: 0.6, sm: 0.7, md: 0.8, lg: 0.9, xl: 1 },
-              fontWeight: 600,
-              fontSize: {
-                xs: "0.6rem",
-                sm: "0.7rem",
-                md: "0.8rem",
-                lg: "0.9rem",
-                xl: "1rem",
-              },
-            }}
-          >
-            Site / Currency
-          </Typography>
         </Grid>
       </Grid>
       <Typography

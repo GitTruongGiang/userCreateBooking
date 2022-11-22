@@ -64,7 +64,7 @@ function ModalFlight({ open, setOpen, modalFlight }) {
         <Box sx={style}>
           <Box sx={{ textAlign: "center" }}>
             <Chip
-              label="Infomation Flight"
+              label="Thông Tin Chuyến Bay"
               sx={{
                 color: "white",
                 fontSize: {

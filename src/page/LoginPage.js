@@ -75,9 +75,9 @@ function LoginPage() {
         </Typography>
       </Box>
       <Alert severity="info">
-        Don’t have an account?{" "}
+        Bạn Chưa Có Tài Khoản?{" "}
         <Link variant="subtitle2" component={RouterLink} to="/register">
-          Get started
+          Bắt Đầu
         </Link>
       </Alert>
       <Typography variant="h5" sx={{ textAlign: "center" }}>
@@ -108,7 +108,7 @@ function LoginPage() {
             control={control}
             render={({ field, fieldState: { error } }) => (
               <TextField
-                label="Password"
+                label="Mật Khẩu"
                 type={showPassword ? "text" : "password"}
                 fullWidth
                 {...field}
@@ -137,7 +137,7 @@ function LoginPage() {
             size="large"
             loading={isSubmitting}
           >
-            LogIn
+            Đăng Nhập
           </LoadingButton>
         </Stack>
       </form>

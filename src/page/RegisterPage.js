@@ -94,9 +94,9 @@ function RegisterPage() {
             <Alert severity="error">{errors.responseError.message}</Alert>
           )}
           <Alert severity="info">
-            Already have an account?{" "}
+            Tài Khoảng Của Bạn Đã Sẳn Sàng?{" "}
             <Link variant="subtitle2" component={RouterLink} to="/login">
-              Sign in
+              Đăng Nhập
             </Link>
           </Alert>
           <Controller
@@ -107,7 +107,7 @@ function RegisterPage() {
                 <TextField
                   autoComplete="off"
                   fullWidth
-                  label="Full Name"
+                  label="Tên Đầy Đủ"
                   {...field}
                   error={!!error}
                   helperText={error?.message}
@@ -123,7 +123,7 @@ function RegisterPage() {
                 <TextField
                   autoComplete="off"
                   fullWidth
-                  label="Email Address"
+                  label="Địa Chỉ Email"
                   {...field}
                   error={!!error}
                   helperText={error?.message}
@@ -139,7 +139,7 @@ function RegisterPage() {
                 <TextField
                   autoComplete="off"
                   fullWidth
-                  label="City"
+                  label="Thành Phố"
                   {...field}
                   error={!!error}
                   helperText={error?.message}
@@ -156,7 +156,7 @@ function RegisterPage() {
                   autoComplete="off"
                   fullWidth
                   type="number"
-                  label="Phone Numeber"
+                  label="Số Điện Thoại"
                   {...field}
                   error={!!error}
                   helperText={error?.message}
@@ -170,7 +170,7 @@ function RegisterPage() {
             render={({ field, fieldState: { error } }) => {
               return (
                 <TextField
-                  label="Password"
+                  label="Mật Khẩu"
                   fullWidth
                   type={showPassword ? "text" : "password"}
                   {...field}
@@ -203,7 +203,7 @@ function RegisterPage() {
               return (
                 <TextField
                   fullWidth
-                  label="Password Confirmation"
+                  label="Điền Lại Mật Khẩu"
                   type={showPasswordConfirmation ? "text" : "password"}
                   {...field}
                   error={!!error}
@@ -240,7 +240,7 @@ function RegisterPage() {
             variant="contained"
             loading={isSubmitting}
           >
-            Register
+            Tạo
           </LoadingButton>
         </Stack>
       </form>

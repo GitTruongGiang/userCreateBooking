@@ -183,7 +183,7 @@ function ModalUpdateFlight({
             onClick={onSubmit}
             sx={{ ":hover": { backgroundColor: "#f44336" } }}
           >
-            Update flight
+            Thay Đổi Chuyến Bay
           </Button>
         </Stack>
       </Box>
