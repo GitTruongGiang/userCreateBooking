@@ -1,33 +1,16 @@
-import { LoadingButton } from "@mui/lab";
 import {
   Box,
   Button,
   Card,
   Chip,
-  Container,
   Divider,
-  Grid,
-  MenuItem,
   Modal,
-  Paper,
   Stack,
-  TextField,
   Typography,
 } from "@mui/material";
-import {
-  DatePicker,
-  DesktopTimePicker,
-  LocalizationProvider,
-  TimePicker,
-} from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs from "dayjs";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import React, { useState } from "react";
 import { countrys } from "../../list";
 import ModalChair from "../chair/ModalChair";
-import { updateFlight } from "./flightSlice";
 import ModalUpdateFlight from "./ModalUpdateFlight";
 
 const style = {
@@ -51,7 +34,6 @@ function ModalFlight({ open, setOpen, modalFlight }) {
     setOpenChairModal(true);
   };
 
-  console.log(modalFlight);
   const handleClose = () => setOpen(false);
   return (
     <div>

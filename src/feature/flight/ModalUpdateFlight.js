@@ -91,7 +91,7 @@ function ModalUpdateFlight({
           <TextField
             select
             fullWidth
-            label="From"
+            label="Xuất Phát"
             size="small"
             onChange={(event) => setFrom(event.target.value)}
             defaultValue={`${modalFlight.from}`.toUpperCase()}
@@ -111,7 +111,7 @@ function ModalUpdateFlight({
           <TextField
             select
             fullWidth
-            label="To"
+            label="Điểm Đến"
             size="small"
             onChange={(event) => setTo(event.target.value)}
             defaultValue={`${modalFlight.to}`.toUpperCase()}
@@ -131,7 +131,7 @@ function ModalUpdateFlight({
           <TextField
             fullWidth
             size="small"
-            label="Price"
+            label="Giá Tiền"
             type="number"
             defaultValue={modalFlight.price}
             onChange={(event) => setPrice(event.target.value)}
@@ -145,7 +145,7 @@ function ModalUpdateFlight({
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               disablePast
-              label="From Day"
+              label="Ngày Xuất Phát"
               value={fromDay}
               onChange={(newValue) => {
                 setFromDay(newValue.toDate());
@@ -156,7 +156,7 @@ function ModalUpdateFlight({
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DesktopTimePicker
-              label="Time From"
+              label="Thời Gian Xuất Phát"
               value={timeFrom}
               onChange={(newValue) => {
                 setTimeFrom(newValue.toDate());
@@ -167,7 +167,7 @@ function ModalUpdateFlight({
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <TimePicker
-              label="Time To"
+              label="Thời Gian Đến"
               value={timeTo}
               onChange={(newValue) => {
                 setTimeTo(newValue.toDate());
