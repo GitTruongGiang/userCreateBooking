@@ -49,6 +49,7 @@ function ListPlane() {
             xl: "20px",
           },
           boxShadow: "0 -2px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
+          borderRadius: "25px",
         }}
       >
         <CardContent sx={{ padding: { xs: "14px", xl: "16px" } }}>

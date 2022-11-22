@@ -56,6 +56,7 @@ function ListAirlines() {
             },
             boxShadow:
               "0 -2px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
+            borderRadius: "25px",
           }}
         >
           <CardContent>
