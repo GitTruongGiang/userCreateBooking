@@ -128,20 +128,6 @@ function ModalUpdateFlight({
             ))}
           </TextField>
 
-          <TextField
-            fullWidth
-            size="small"
-            label="Giá Tiền"
-            type="number"
-            defaultValue={modalFlight.price}
-            onChange={(event) => setPrice(event.target.value)}
-            sx={{
-              backgroundColor: "white",
-              borderRadius: "8px",
-              fontStyle: "italic",
-            }}
-          />
-
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               disablePast
@@ -175,6 +161,20 @@ function ModalUpdateFlight({
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
+
+          <TextField
+            fullWidth
+            size="small"
+            label="Giá Tiền"
+            type="number"
+            defaultValue={modalFlight.price}
+            onChange={(event) => setPrice(event.target.value)}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: "8px",
+              fontStyle: "italic",
+            }}
+          />
         </Box>
 
         <Stack spacing={3} alignItems="flex-end" sx={{ mt: 3 }}>
